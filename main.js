@@ -1,12 +1,12 @@
 function calc (operator, a, b) {
     if (typeof a != 'number' || typeof b != 'number') {
-        return 'Error';
-    } else if (a != NaN || b != NaN) {
-        return 'Error';
-    } else if (operator == '/' && b == 0) {
-        return 'Error';
-    }  else if (operator == '%' && b == 0) {
-        return 'Error';
+        return 'Error1 Один из аргументов не число';
+    }   else if (isNaN(a) || isNaN(b)) {
+        return 'Error2 Один из аргументов не число';
+    }   else if (operator == '/' && b == 0) {
+        return 'Error3 Делить на ноль нельзя';
+    }   else if (operator == '%' && b == 0) {
+        return 'Error4 Вычислить остаток деления от 0 нельзя';
     }
 
     switch (operator) {
@@ -19,5 +19,14 @@ function calc (operator, a, b) {
         default : return 'unknown operation';
 }
 }
-let result = calc ('-',NaN,2);
-console.log(result);
+
+console.log(calc ('-',"2",2));
+console.log(calc ('-',NaN,2));
+console.log(calc ('-', 2, 2));
+console.log(calc ('+', 2, 2));
+console.log(calc ('*', 2, 2));
+console.log(calc ('/', 2, 2));
+console.log(calc ('/', 2, 0));
+console.log(calc ('%', 2, 0));
+console.log(calc ('%', 3, 2));
+console.log(calc ('**', 3, 2));
